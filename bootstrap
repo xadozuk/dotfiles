@@ -1,7 +1,17 @@
 #!/bin/bash
 
 export DOTFILES=~/.dotfiles
-export BACKUP="$DOTFILES/backups"
+export CACHE="$DOTFILES/cache"
+export ANTIGEN="$CACHE/antigen"
+export BACKUP="$CACHE/backups"
+
+function install_antigen() {
+    if [[ ! -d $ANTIGEN ]]; then
+        [[ -e "$CACHE" ]] || mkdir -p "$CACHE"
+
+        git clone https://github.com/zsh-users/antigen.git $ANTIGEN
+    fi
+}
 
 function make_symlinks() {
     local files=($DOTFILES/*)
@@ -13,7 +23,7 @@ function make_symlinks() {
         base="$(basename $file)"
         dest="$HOME/.$base"
 
-        if [[ "$base" != "bootstrap" && "$base" != "backups" ]]; then
+        if [[ "$file" != "$CACHE" ]]; then
             if [[ -e "$dest" && -f "$dest" ]]; then
                 [[ -e "$BACKUP" ]] || mkdir -p "$BACKUP"
                 mv "$dest" "$BACKUP"
@@ -28,11 +38,13 @@ function make_symlinks() {
 if [[ ! -d $DOTFILES ]]; then
 	git clone https://github.com/xadozuk/dotfiles.git $DOTFILES
     cd $DOTFILES
-elif [[ "$1" != "restart" ]]; then
+elif [[ "$1" == "update" ]]; then
     cd $DOTFILES
+    rm -rf $CACHE
     git pull
 fi
 
+install_antigen
 make_symlinks
 
 echo -e "\nAll done!"

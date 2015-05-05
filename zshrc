@@ -1,6 +1,6 @@
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-source ~/.zsh/antigen/antigen.zsh
+source ~/.dotfiles/cache/antigen/antigen.zsh
 
 # Load th oh-my-zsh's library
 antigen use oh-my-zsh

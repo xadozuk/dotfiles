@@ -1,0 +1,41 @@
+#!/bin/bash
+
+export DOTFILES=~/.dotfiles
+export BACKUP="$DOTFILES/backups"
+
+function make_symlinks() {
+    local files=($DOTFILES/*)
+    local dest base
+
+    if (( ${#files[@]} == 0 )); then return; fi
+
+    for file in "${files[@]}"; do
+        base="$(basename $file)"
+        dest="$HOME/.$base"
+
+        if [[ "$base" != "bootstrap" && "$base" != "backups" ]]; then
+            if [[ -e "$dest" && -f "$dest" ]]; then
+                [[ -e "$BACKUP" ]] || mkdir -p "$BACKUP"
+                mv "$dest" "$BACKUP"
+            fi
+
+            echo -e "Linking '$file' to '$dest'"
+            ln -s $file $dest
+        fi
+    done
+}
+
+if [[ ! -d $DOTFILES ]]; then
+	git clone https://github.com/xadozuk/dotfiles.git $DOTFILES
+    cd $DOTFILES
+elif [[ "$1" != "restart" ]]; then
+    cd $DOTFILES
+    git pull
+fi
+
+make_symlinks
+
+echo -e "\nAll done!"
+
+
+

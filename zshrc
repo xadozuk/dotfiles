@@ -8,6 +8,7 @@ antigen use oh-my-zsh
 # Bundles
 # antigen bundle git
 antigen bundle gitfast
+antigen bundle git-flow
 antigen bundle brew
 antigen bundle bundler
 antigen bundle composer

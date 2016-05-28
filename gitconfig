@@ -3,6 +3,7 @@
 # Please adapt and uncomment the following lines:
 	user = Xadozuk
 	email = xadozuk@gmail.com
+	editor = vim
 [push]
 	default = simple
 [user]

@@ -2,8 +2,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 source ~/.dotfiles/cache/antigen/antigen.zsh
 
-if [ -f "~/.aliases" ]; then
-    source "~/.aliases"
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 fi
 
 # Load th oh-my-zsh's library

@@ -2,6 +2,10 @@ export PATH="$PATH:$HOME/.rvm/bin:/usr/local/sbin" # Add RVM to PATH for scripti
 
 source ~/.dotfiles/cache/antigen/antigen.zsh
 
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
+
 # Load th oh-my-zsh's library
 antigen use oh-my-zsh
 

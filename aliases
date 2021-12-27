@@ -1,2 +1,3 @@
 alias dockerls='docker ps --format="table {{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Command}}"'
 alias dockerll='docker ps -a --format="table {{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Command}}"'
+alias kubectl='microk8s kubectl'

@@ -4,6 +4,8 @@ if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
 
+[ -s "/Users/xadozuk/.dnx/dnvm/dnvm.sh" ] && . "/Users/xadozuk/.dnx/dnvm/dnvm.sh" # Load dnvm
+
 # Load th oh-my-zsh's library
 antigen use oh-my-zsh
 
@@ -17,11 +19,9 @@ antigen bundle common-aliases
 
 antigen bundle brew
 antigen bundle bundler
-antigen bundle composer
 antigen bundle docker
 antigen bundle gem
 antigen bundle ruby
-antigen bundle symfony2
 
 antigen bundle asdf
 
@@ -37,4 +37,3 @@ fpath=(/usr/local/share/zsh-completions "$(brew --prefix)/share/zsh/site-functio
 
 antigen apply
 
-[ -s "/Users/xadozuk/.dnx/dnvm/dnvm.sh" ] && . "/Users/xadozuk/.dnx/dnvm/dnvm.sh" # Load dnvm

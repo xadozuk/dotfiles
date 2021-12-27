@@ -4,6 +4,7 @@
 	user = Xadozuk
 	email = xadozuk@gmail.com
 	editor = vim
+	autocrlf = input
 [push]
 	default = simple
 [user]

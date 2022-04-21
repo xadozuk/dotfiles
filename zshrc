@@ -17,7 +17,7 @@ antigen bundle git-extras
 
 antigen bundle common-aliases
 
-antigen bundle brew
+antigen bundle brew	
 antigen bundle bundler
 antigen bundle docker
 antigen bundle gem
@@ -33,7 +33,12 @@ antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-se
 antigen theme gianu
 
 #Auto-completion
-fpath=(/usr/local/share/zsh-completions "$(brew --prefix)/share/zsh/site-functions" $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+if command -v brew &> /dev/null
+then
+    fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
+fi
 
 antigen apply
 

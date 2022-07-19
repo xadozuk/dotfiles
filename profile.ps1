@@ -3,12 +3,8 @@
 $ASDF_BIN = "$($env:HOME)/.asdf/bin"
 $ASDF_USER_SHIMS = "$($env:HOME)/.asdf/shims"
 
-[System.Environment]::SetEnvironmentVariable('HOMEBREW_PREFIX','/home/linuxbrew/.linuxbrew',[System.EnvironmentVariableTarget]::Process)
-[System.Environment]::SetEnvironmentVariable('HOMEBREW_CELLAR','/home/linuxbrew/.linuxbrew/Cellar',[System.EnvironmentVariableTarget]::Process)
-[System.Environment]::SetEnvironmentVariable('HOMEBREW_REPOSITORY','/home/linuxbrew/.linuxbrew/Homebrew',[System.EnvironmentVariableTarget]::Process)
-
 [System.Environment]::SetEnvironmentVariable('ASDF_BIN', $ASDF_BIN, [EnvironmentVariableTarget]::Process)
-[System.Environment]::SetEnvironmentVariable('ASDF_USER_SHIMS', $ASDF_USER_SHIMS)
+[System.Environment]::SetEnvironmentVariable('ASDF_USER_SHIMS', $ASDF_USER_SHIMS, [EnvironmentVariableTarget]::Process)
 
 [System.Environment]::SetEnvironmentVariable('MANPATH',$('/home/linuxbrew/.linuxbrew/share/man'+$(if(${ENV:MANPATH}){':'+${ENV:MANPATH}})+':'),[System.EnvironmentVariableTarget]::Process)
 [System.Environment]::SetEnvironmentVariable('INFOPATH',$('/home/linuxbrew/.linuxbrew/share/info'+$(if(${ENV:INFOPATH}){':'+${ENV:INFOPATH}})),[System.EnvironmentVariableTarget]::Process)
@@ -16,7 +12,7 @@ $ASDF_USER_SHIMS = "$($env:HOME)/.asdf/shims"
 [System.Environment]::SetEnvironmentVariable(
     'PATH',
     "$($ASDF_BIN):$($ASDF_USER_SHIMS):" + 
-    '/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:' + 
+    "$($ENV:HOME)/bin" + 
     $ENV:PATH,
     [System.EnvironmentVariableTarget]::Process
 )
@@ -89,3 +85,4 @@ Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
 
 if(Test-Powerline) { Set-PSReadLineOption -PromptText "$([char]::ConvertFromUtf32(0x276F)) " }
 else { Set-PSReadLineOption -PromptText "> " }
+

@@ -63,8 +63,8 @@ $PSDefaultParameterValues = @{
 }
 
 # Prompt
-$OhMyPoshTheme = if(Test-Powerline) { "/home/lde/.config/powershell/xadozuk.powerline.omp.json" }
-                 else { "/home/lde/.config/powershell/xadozuk.simple.omp.json" }
+$OhMyPoshTheme = if(Test-Powerline) { "$($env:HOME)/.config/powershell/xadozuk.powerline.omp.json" }
+                 else { "$($env:HOME)/.config/powershell/xadozuk.simple.omp.json" }
 oh-my-posh --init --shell pwsh --config $OhMyPoshTheme | Invoke-Expression
 
 # Auto load my functions

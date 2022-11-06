@@ -7,7 +7,7 @@ fi
 [ -s "/Users/xadozuk/.dnx/dnvm/dnvm.sh" ] && . "/Users/xadozuk/.dnx/dnvm/dnvm.sh" # Load dnvm
 
 if [ -f ~/.asdf/asdf.sh ]; then
-    source ~/.asdf/asdh.sh
+    source ~/.asdf/asdf.sh
 fi
 
 # Load th oh-my-zsh's library

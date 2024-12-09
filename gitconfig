@@ -3,7 +3,7 @@
 # Please adapt and uncomment the following lines:
 	user = Xadozuk
 	email = xadozuk@gmail.com
-	editor = vim
+	editor = nvim
 	autocrlf = input
 [push]
 	default = simple
@@ -11,4 +11,4 @@
 	name = Xadozuk
 	email = xadozuk@gmail.com
 [pull]
-	rebase = false
+	rebase = true
